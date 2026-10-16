@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DumpbinGui.App/DumpbinGui.App.csproj" />
+    <Project Path="src/DumpbinGui.Core/DumpbinGui.Core.csproj" />
+    <Project Path="src/DumpbinGui.Infrastructure/DumpbinGui.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DumpbinGui.Tests/DumpbinGui.Tests.csproj" />
+  </Folder>
+</Solution>

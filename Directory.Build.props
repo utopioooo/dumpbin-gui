@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <InformationalVersion>V0.1</InformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <BuildProjectFolder>$([System.IO.Path]::GetFileName('$(MSBuildProjectDirectory)'))</BuildProjectFolder>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)build\bin\$(BuildProjectFolder)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)build\obj\$(BuildProjectFolder)\</BaseIntermediateOutputPath>
+    <MSBuildProjectExtensionsPath>$(BaseIntermediateOutputPath)</MSBuildProjectExtensionsPath>
+    <DefaultItemExcludes>$(DefaultItemExcludes);bin\**;obj\**;$(MSBuildThisFileDirectory)build\**</DefaultItemExcludes>
+  </PropertyGroup>
+</Project>
