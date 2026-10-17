@@ -1,4 +1,4 @@
-# Dumpbin GUI V0.1
+# Dumpbin GUI V0.1.1
 
 Windows WPF application using .NET 10 and CommunityToolkit.Mvvm.
 
@@ -28,4 +28,4 @@ Resource image/string/version previews and a hierarchical resource tree are not 
 
 ## One-click packaging
 
-Double-click pack.cmd or run ./pack.ps1. The default is a self-contained Windows x64 single-file application. Output: publish/win-x64 and publish/dumpbin-gui-V0.1-win-x64.zip. A .NET SDK and network access for runtime restore are needed on the build machine. Microsoft dumpbin is acquired separately on first use. For ARM64: ./pack.ps1 -Runtime win-arm64 (tool auto-download currently targets x64).
+Double-click pack.cmd or run ./pack.ps1. The default is a self-contained Windows x64 single-file application. Output: publish/win-x64 and publish/dumpbin-gui-V0.1.1-win-x64.zip. A .NET SDK and network access for runtime restore are needed on the build machine. Microsoft dumpbin is acquired separately on first use. For ARM64: ./pack.ps1 -Runtime win-arm64 (tool auto-download currently targets x64).

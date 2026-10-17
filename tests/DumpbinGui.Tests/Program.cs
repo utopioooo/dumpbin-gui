@@ -30,3 +30,14 @@ var members=ArchiveReader.Read(archive);
 if(members.Count!=2 || members[0].Name!="a.obj" || members[1].Name!="very_long_object_name.obj" || members[0].Size!=3) throw new Exception("LIB member parsing failed");
 Console.WriteLine("PASS: LIB short/long names, odd alignment and index filtering");
 }
+
+var libFunctions=OutputParser.Parse("Archive member name at 100: sample.obj\nCOFF SYMBOL TABLE\n000 00000000 SECT1 notype () External | ?Example@@YAXXZ\n001 00000000 UNDEF notype () External | _Other\n002 00000000 SECT2 notype External | _data");
+var funcs=libFunctions.Single(c=>c.Name.Contains("Functions")).Rows;
+if(funcs.Count!=2 || (string)funcs[0]["Member"]!="sample.obj" || (string)funcs[1]["Definition"]!="Reference") throw new Exception("LIB functions parsing failed");
+if(ResultValidation.HasValue("\0\u200b \t") || OutputParser.Parse("\u200b\0").Count!=0) throw new Exception("Invisible strings must be empty");
+Console.WriteLine("PASS: LIB functions and invisible string validation");
+
+var emptySections=OutputParser.Parse("COFF SYMBOL TABLE\n 00000000 number of symbols\n-----\nRELOCATIONS #1\nAddress Type Applied To Symbol Index\n 0 relocations\nSummary\n none\nFILE HEADER VALUES\n 0  time date stamp");
+if(emptySections.Any(c=>c.Name.StartsWith("COFF") || c.Name.StartsWith("RELOCATIONS") || c.Name=="Summary")) throw new Exception("Empty section placeholders leaked");
+if(!emptySections.Any(c=>c.Name=="FILE HEADER VALUES")) throw new Exception("Valid zero field removed");
+Console.WriteLine("PASS: empty headings/separators/counts hidden; valid zero fields retained");
